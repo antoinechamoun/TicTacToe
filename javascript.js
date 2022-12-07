@@ -40,13 +40,11 @@ const gameBoard = (function GameBoard(){
                 isX=!isX
                 if(versusChoice.value!=='1vs1'){
                     checkWin()
-                    console.log('checked 2' + winner);
                     if(winner!==''){
                         restart()
                         return
                     }
                     computerPlay()
-                    console.log('chosen');
                 }
             }
             checkWin()
@@ -58,7 +56,6 @@ const gameBoard = (function GameBoard(){
 
     // Check if there is a winner
     function checkWin(){
-        console.log('check is win?');
         if(gameBoardArray[0] === gameBoardArray[1] && gameBoardArray[1] === gameBoardArray[2] && gameBoardArray[1] !== ''||
         gameBoardArray[0] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[8] && gameBoardArray[4] !== ''||
         gameBoardArray[0] === gameBoardArray[3] && gameBoardArray[3] === gameBoardArray[6] && gameBoardArray[3] !== ''){
@@ -80,7 +77,6 @@ const gameBoard = (function GameBoard(){
                 alert(winner + " is the winner")
             }
         }
-        console.log('checked 1');
 
     }
 
@@ -97,30 +93,22 @@ const gameBoard = (function GameBoard(){
 
     // Computer play function
     function computerPlay(){
-        console.log('enter pc');
         let computerLevel = versusChoice.value.split("_")[1];
         do{
             compChoice = Math.floor(Math.random()*9)
             cellSelected = document.getElementById(`${choiceStr[compChoice]}`)
         }while(cellSelected.textContent!=='')
-        console.log('choose first');
         if(computerLevel === 'medium'){
             checkMedium()
-            console.log('choose medium');
         }else{
-            console.log('first: '+compChoice);
             if(!checkAllWin()){
-                console.log('second: '+compChoice);
                 if(!checkMedium()){
-                    console.log('third: '+compChoice);
                     checkCorners()
-                    console.log('fourth: '+compChoice);
                 }
             }
         }
         
         cellSelected = document.getElementById(`${choiceStr[compChoice]}`)
-        console.log(cellSelected);
         cellSelected.textContent='O';
         gameBoardArray[compChoice]='O';
         isX=true
