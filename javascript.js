@@ -100,10 +100,11 @@ const gameBoard = (function GameBoard(){
         }while(cellSelected.textContent!=='')
         if(computerLevel === 'medium'){
             checkMedium()
-        }else{
-            if(!checkAllWin()){
-                if(!checkMedium()){
-                    checkCorners()
+        }else if(computerLevel === 'hard'){{
+                if(!checkAllWin()){
+                    if(!checkMedium()){
+                        checkCorners()
+                    }
                 }
             }
         }
